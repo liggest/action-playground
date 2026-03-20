@@ -37,7 +37,6 @@ jobs:
           cat > ~/.claude/settings.json << 'EOF'
           {
             "env": {
-              "ANTHROPIC_AUTH_TOKEN": "${{ secrets.ANTHROPIC_AUTH_TOKEN }}",
               "ANTHROPIC_BASE_URL": "${{ secrets.ANTHROPIC_BASE_URL }}",
               "ANTHROPIC_MODEL": "${{ secrets.ANTHROPIC_MODEL }}"
             }
@@ -47,3 +46,5 @@ jobs:
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
